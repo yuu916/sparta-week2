@@ -104,17 +104,6 @@
       }
     </style>
     <script>
-      $(document).ready(function () {
-        //listing();
-        fetch("http://spartacodingclub.shop/sparta_api/weather/tokyo")
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            let number = data['temp']
-            $('#temp').text(number)
-          });
-      });
-
       function listing() {
         $("#cards-box").empty();
         fetch("http://spartacodingclub.shop/web/jp/api/movie")
@@ -148,6 +137,18 @@
           })
           .catch(console.error);
       }
+      
+      
+      $(document).ready(function () {
+        fetch("http://spartacodingclub.shop/sparta_api/weather/tokyo")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            let number = data['temp']
+            $('#temp').text(number)
+          });
+        listing();
+      });
 
       function open_box() {
         $("#post-box").show();
